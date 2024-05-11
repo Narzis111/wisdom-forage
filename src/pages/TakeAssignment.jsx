@@ -1,0 +1,112 @@
+
+import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth";
+import { Zoom } from "react-reveal";
+
+const TakeAssignment = () => {
+    const { user } = useAuth() || {};
+  
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const doc = e.target.doc.value;
+        const note = e.target.note.value;
+        const email = user?.email;
+        const submit = {
+
+            email: email,
+            submit_note: note,
+            submit_doc: doc,
+        }
+
+        console.log(submit);
+
+        fetch('http://localhost:5000/submit', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(submit)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Assignment Submitted Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    });
+                }
+            })
+
+      
+
+
+    };
+
+
+
+
+
+    return (
+        <div>
+            <Zoom><h2 className="text-center lg:text-3xl text-xl font-bold hover:animate-heartBeat-2s transition-transform mt-24 mb-4">Submit Your Assignment Here!</h2>
+            </Zoom>
+            <form onSubmit={handleSubmit} className="max-w-[450px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input type="text" defaultValue={user?.displayName} disabled name="name" className="input input-bordered" />
+                    </div>
+                    {/* <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Submitted Date</span>
+                        </label>
+                        <input type="date" name="date" className="input input-bordered" />
+                    </div> */}
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="text" name="email" disabled defaultValue={user?.email} placeholder="email" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="block mt-4 mb-2 dark:text-white" htmlFor="short Note">
+                            Short Note
+                        </label>
+                        <textarea
+                            className="w-full p-2 border rounded-md focus:outline-[#92b0e7]"
+                            placeholder="Enter Short Note"
+                            id="note"
+                            name="note"
+                        ></textarea>
+
+                    </div>
+                    <div className="form-control">
+                        <label className="block mt-4 mb-2 dark:text-white" htmlFor="Document Link">
+                            Your Document Link
+                        </label>
+                        <input
+                            className="w-full p-2 border rounded-md focus:outline-[#92b0e7]"
+                            placeholder="Insert pdf/image Doc"
+                            id="doc"
+                            name="doc"
+                        ></input>
+
+                    </div>
+
+                </div>
+                <div className="form-control mt-6">
+                    <input className="btn btn-primary btn-block" type="submit" value="Submit Confirm" />
+                </div>
+            </form>
+        </div>
+    );
+};
+
+export default TakeAssignment;

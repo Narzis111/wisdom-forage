@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Helmet } from "react-helmet-async";
 import useAuth from '../hooks/useAuth';
-
-// import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import SocialLogin from '../components/SocialLogin/SocialLogin';
 // import log from '../../assets/beautiful-seamless-vector-floral-pattern-600nw-2159312503.webp';
 
 
@@ -55,13 +53,11 @@ const Login = () => {
 
     return (
         <>
-           <Helmet>
-                <title>CraftDEN | Login</title>
-             </Helmet>
+          
             <div className="hero min-h-screen lg:mb-10">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left rounded-xl p-6">
-                        <img className='w-full h-full object-cover rounded-xl' src={log} alt="" />
+                        <img className='w-full h-full object-cover rounded-xl' src="" alt="" />
                     </div>
 
                     <div className="card border-2 border-purple-600 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

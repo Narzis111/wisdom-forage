@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import useAuth from "../../hooks/useAuth";
 
 
+
 const SocialLogin = () => {
   const { googleLogin, githubLogin } = useAuth();
 

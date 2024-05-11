@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
-import useAuth from "../../hooks/useAuth";
-import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import zpot from "../../assets/hat.webp";
+
+import useAuth from "../hooks/useAuth";
+import SocialLogin from "../components/SocialLogin/SocialLogin";
+// import zpot from "../../assets/hat.webp";
 
 
 const Register = () => {
@@ -50,13 +50,11 @@ const Register = () => {
 
   return (
     <>
-       <Helmet>
-                <title>CraftDEN | Register</title>
-             </Helmet>
+      
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:h-[750px] w-full lg:text-left">
-            <img className='w-full h-full object-cover' src={zpot} alt="" />
+            <img className='w-full h-full object-cover' src="" alt="" />
 
           </div>
           <form
