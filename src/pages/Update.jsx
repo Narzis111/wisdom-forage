@@ -12,32 +12,32 @@ const Update = () => {
     const { _id,
         title, description, marks, thumbnail_url,
         difficulty_level, due_date,
-      
-         } = assign;
-         const [dueDate, setDueDate] = useState(null);
 
-         const handleDateChange = (date) => {
-             setDueDate(date);
-         };
-         const handleUpdate = (e) => {
-            e.preventDefault();
-            console.log(e);
-        
-            const thumbnail_url = e.target.thumbnail_url.value;
+    } = assign;
+    const [dueDate, setDueDate] = useState(null);
+
+    const handleDateChange = (date) => {
+        setDueDate(date);
+    };
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        console.log(e);
+
+        const thumbnail_url = e.target.thumbnail_url.value;
         const title = e.target.title.value;
         const description = e.target.description.value;
         const marks = e.target.marks.value;
         const difficulty_level = e.target.difficulty_level.value;
         const due_date = e.target.due_date.value;
-           
-        
-            const update = {
-                title, description, marks, thumbnail_url,
-                difficulty_level, due_date,
-             
-            };
-            console.log(update);
-        
+
+
+        const update = {
+            title, description, marks, thumbnail_url,
+            difficulty_level, due_date,
+
+        };
+        console.log(update);
+
         // send data to the server
         fetch(`http://localhost:5000/assignment/${_id}`, {
             method: 'PUT',
@@ -59,21 +59,21 @@ const Update = () => {
                 }
             })
     }
-        
-          return (
-            <>
-        
+
+    return (
+        <>
+
             <div className="gadgetContainer pt-10">
-              <div className="shadow-lg p-5 border dark:bg-[#1a2641d5]">
-                <div className="mt-5 mb-8">
-                  <p className="text-center text-3xl font-semibold">
-                    <span className="mr-3 text-[#FF497C]">
-                      <i className="bx bxs-alarm-add"></i>
-                    </span>
-                    <span className="dark:text-white">Update Your Craft Item</span>
-                  </p>
-                </div>
-                <form onSubmit={handleUpdate}>
+                <div className="shadow-lg p-5 border dark:bg-[#1a2641d5]">
+                    <div className="mt-5 mb-8">
+                        <p className="text-center text-3xl font-semibold">
+                            <span className="mr-3 text-[#FF497C]">
+                                <i className="bx bxs-alarm-add"></i>
+                            </span>
+                            <span className="dark:text-white">Update Your Craft Item</span>
+                        </p>
+                    </div>
+                    <form onSubmit={handleUpdate}>
                         <div className="flex gap-8 lg:flex-row flex-col">
                             <div className="flex-1">
                                 <label className="block mt-4 mb-2 dark:text-white" htmlFor="item_name">
@@ -136,10 +136,10 @@ const Update = () => {
                                     placeholderText="Select a date"
                                     id="due_date"
                                     name="due_date"
-                                    dateFormat="yyyy-dd-MM" 
+                                    dateFormat="yyyy-dd-MM"
                                     defaultValue={due_date}
                                 />
-                                
+
 
                                 <label className="block mt-4 mb-2 dark:text-white" htmlFor="Difficulty Level">
                                     Difficulty level
@@ -158,7 +158,7 @@ const Update = () => {
 
                             </div>
                         </div>
-                       
+
 
                         <input
                             className="px-4 w-full py-2 mt-4 rounded hover:bg-purple-800  bg-purple-600 duration-200 text-white cursor-pointer font-semibold"
@@ -166,11 +166,11 @@ const Update = () => {
                             value="Update Assignment"
                         />
                     </form>
-              </div>
-             
+                </div>
+
             </div>
-            </>
-          );
-        };
+        </>
+    );
+};
 
 export default Update;

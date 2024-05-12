@@ -11,7 +11,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import Slide from './Slide'
 
 import bgimg1 from '../../assets/bg1.jpg'
-import bgimg2 from '../../assets/man-ge4e83abb0_1280.png'
+import bgimg2 from '../../assets/bg5.jpeg'
 import bgimg3 from '../../assets/download.jpeg'
 
 export default function Banner() {

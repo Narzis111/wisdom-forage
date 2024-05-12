@@ -1,5 +1,6 @@
 import { Fade, Zoom } from "react-reveal";
 import { Link, useLoaderData } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Details = () => {
     const views = useLoaderData();
@@ -7,12 +8,17 @@ const Details = () => {
 
     const {
         title, description, marks, thumbnail_url,
-        difficulty_level, due_date, _id
+        difficulty_level, due_date, _id, creator_email
         
     } = views;
+    const { user } = useAuth() || {};
 
+    const handleTake = (_id, creator_email) => {
+        console.log(_id);
+        console.log(creator_email);
+    
 
-
+    }
     return (
         <div>
            
@@ -31,13 +37,15 @@ const Details = () => {
                     </div>
                     <div className="space-y-6">
                         <h1 className="text-3xl font-bold">Assignment Title: {title}</h1>
-                        <h1>difficulty_level: {difficulty_level}</h1>
-                        <h1>Category: {marks}</h1>
+                        <h1>Difficulty level: {difficulty_level}</h1>
+                        <h1>Marks: {marks}</h1>
                         <p>Detail: {description}</p>
                         <p>Date: {due_date}</p>
-                        <Link to={`/take/${_id}`}>
-                        <button className="btn bg-purple-600">Take Assignment</button>
-                    </Link>
+                        {user?.email !== creator_email && (
+                            <Link to={`/take/${_id}`}>
+                                <button onClick={() => handleTake(_id, creator_email)} className="btn bg-purple-600 mt-3">Take Assignment</button>
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>

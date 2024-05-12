@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from '../hooks/useAuth';
 import SocialLogin from '../components/SocialLogin/SocialLogin';
+import axios from 'axios';
 // import log from '../../assets/beautiful-seamless-vector-floral-pattern-600nw-2159312503.webp';
 
 
@@ -15,45 +16,59 @@ const Login = () => {
     //   // navigation systems
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location?.state || "/";
 
     const onSubmit = (data) => {
         const { email, password } = data;
-      
+
         // log in user
         logInUser(email, password)
-          .then((result) => {
-            console.log(result.user);
-            if (!result || !result.user) {
-              toast.error('Invalid email or password');
-            } 
-            else {
-                
-                    const user = result.user
-                    console.log(user)
-                    setTimeout(()=>{
+            .then((result) => {
+                console.log(result.user);
+                if (!result || !result.user) {
+                    toast.error('Invalid email or password');
+                }
+                else {
+
+                    const loggedInUser = result.user
+                    console.log(loggedInUser);
+
+                    const user = { email };
+
+                    setTimeout(() => {
                         toast.success('Log in Successful');
                     }, 2000)
-              navigate(from);
-            }
-          })
-          .catch(error =>{
-            console.log(error.message)
-            if(error.message === "Firebase: Error (auth/invalid-login-credentials)."){
-                const errormessage = 'Invalid login credentials'
-                toast.error(errormessage)
-            }else if(error.message ==="Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."){
-                const errmessage = 'Access to this account has been temporarily disabled due to many failed login attempts. You can try again later.'
-                toast.error(errmessage)
-            }    else{
-                toast.error(error.message)
-          }})
-      };
-      
+
+                    //  access token
+                    axios.post('http://localhost:5000/jwt', user)
+                        .then(res => {
+                            console.log(res.data)
+                            if (res.data.success) {
+                                navigate(location?.state ? location?.state : '/')
+                               
+                            }
+                        })
+
+
+                }
+            })
+            .catch(error => {
+                console.log(error.message)
+                if (error.message === "Error (auth/invalid-login-credentials).") {
+                    const errormessage = 'Invalid login credentials'
+                    toast.error(errormessage)
+                } else if (error.message === "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).") {
+                    const errmessage = 'Access to this account has been temporarily disabled due to many failed login attempts. You can try again later.'
+                    toast.error(errmessage)
+                } else {
+                    toast.error(error.message)
+                }
+            })
+    };
+
 
     return (
         <>
-          
+
             <div className="hero min-h-screen lg:mb-10">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left rounded-xl p-6">
@@ -79,7 +94,7 @@ const Login = () => {
                                     {...register("password", { required: true })}
                                 />
                                 {errors.password && <span className='text-red-500'>This field is required</span>}
-                               
+
                             </div>
                             <div className="form-control mt-6 p-0">
                                 <button className="btn bg-purple-600">Login</button>

@@ -2,9 +2,12 @@
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { Zoom } from "react-reveal";
+import { useLoaderData } from "react-router-dom";
 
 const TakeAssignment = () => {
     const { user } = useAuth() || {};
+    const submitData = useLoaderData()
+   const {title, marks, _id} = submitData
   
 
     const handleSubmit = (e) => {
@@ -12,11 +15,17 @@ const TakeAssignment = () => {
         const doc = e.target.doc.value;
         const note = e.target.note.value;
         const email = user?.email;
-        const submit = {
+        const examineeName = user?.displayName;
+        const status = 'Pending';
 
-            email: email,
+        const submit = {
+            tilte: title,
+            marks: marks,
+            examineeName,
+            email,
             submit_note: note,
             submit_doc: doc,
+            status,
         }
 
         console.log(submit);
@@ -40,35 +49,24 @@ const TakeAssignment = () => {
                     });
                 }
             })
-
-      
-
-
     };
-
-
-
-
 
     return (
         <div>
             <Zoom><h2 className="text-center lg:text-3xl text-xl font-bold hover:animate-heartBeat-2s transition-transform mt-24 mb-4">Submit Your Assignment Here!</h2>
             </Zoom>
+            <h2>Assignment Title: {title}</h2>
+            <h3>Total Mark: {marks}</h3>
             <form onSubmit={handleSubmit} className="max-w-[450px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Examinee Name</span>
                         </label>
-                        <input type="text" defaultValue={user?.displayName} disabled name="name" className="input input-bordered" />
+                        <input type="text" defaultValue={user?.displayName} disabled name="examineeName" className="input input-bordered" />
                     </div>
-                    {/* <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Submitted Date</span>
-                        </label>
-                        <input type="date" name="date" className="input input-bordered" />
-                    </div> */}
-
+                   
+                   
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
@@ -84,6 +82,7 @@ const TakeAssignment = () => {
                             placeholder="Enter Short Note"
                             id="note"
                             name="note"
+                            required
                         ></textarea>
 
                     </div>
@@ -96,14 +95,16 @@ const TakeAssignment = () => {
                             placeholder="Insert pdf/image Doc"
                             id="doc"
                             name="doc"
+                            required
                         ></input>
 
                     </div>
 
                 </div>
+             
                 <div className="form-control mt-6">
-                    <input className="btn btn-primary btn-block" type="submit" value="Submit Confirm" />
-                </div>
+                <input className="btn btn-primary btn-block" type="submit" value="Submit Confirm" />
+            </div>
             </form>
         </div>
     );

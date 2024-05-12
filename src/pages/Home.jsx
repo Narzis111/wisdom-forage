@@ -5,7 +5,7 @@ import Feature from "../components/Feature/Feature";
 const Home = () => {
     return (
         <div>
-          {/* <Banner></Banner>   */}
+          <Banner></Banner>  
           <Feature></Feature>
           <FAQs></FAQs>
         </div>

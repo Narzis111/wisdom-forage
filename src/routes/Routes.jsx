@@ -11,6 +11,8 @@ import Details from "../pages/Details";
 import Update from "../pages/Update";
 import TakeAssignment from "../pages/TakeAssignment";
 import Submit from "../pages/Submit";
+import Pending from "../pages/Pending";
+import Marking from "../pages/Marking";
 
 
 const router = createBrowserRouter([
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                index: true,
+                path: "/",
                 element: <Home></Home>, 
                 loader:  () => fetch('http://localhost:5000/assignment'),
             },
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
          
               {
                 path: '/assignment/:id',
-                element: <Details></Details>,
+                element: <PrivateRoutes><Details></Details></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`),
               },
               {
@@ -49,10 +51,28 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes><TakeAssignment></TakeAssignment></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`)
               },
+              // all pending submission
               {
+                path: "/pending",
+                element:<PrivateRoutes><Pending></Pending></PrivateRoutes>,
+                
+
+              },
+              {
+                // my submission
                 path: "submit",
                 element:<PrivateRoutes><Submit></Submit></PrivateRoutes>,
+             
               },
+              {
+                // marking page
+                path: "marking/:id",
+                element:<Marking></Marking>,
+                loader: ({ params }) => fetch(`http://localhost:5000/submit/${params.id}`)
+             
+              },
+  
+
             {
                 path: "login",
                 element: <Login></Login> 

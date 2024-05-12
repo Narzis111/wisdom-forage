@@ -94,7 +94,7 @@ const AllAssignment = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {/* {filteredAssignments.slice(0, 4).map((assign) => ( */}
+                   
                     {filteredAssignments.map((assign) => (
                         <div key={assign._id}>
 
@@ -109,7 +109,7 @@ const AllAssignment = () => {
                                         <div className="badge bg-purple-300 hover:bg-purple-600">Level: {assign.difficulty_level}</div>
                                         <h2 className="card-title hover:underline"></h2>
                                         <p>Marks: <span className='font-bold'> {assign.marks}</span></p>
-                                        <p>Description: {assign.description}</p>
+                                        
                                         <div className="card-actions justify-end">
                                             <div className="join">
                                                 <Link to={`/assignment/${assign._id}`}>

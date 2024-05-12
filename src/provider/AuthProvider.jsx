@@ -2,6 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null);
@@ -18,7 +19,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const [loading, setLoading] = useState(true);
-    const [reload, setReload] = useState(false);
+   
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -64,14 +65,35 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe =
             onAuthStateChanged(auth, currentUser => {
+                const userEmail = currentUser?.email || user?.email;
+                const loggedUser = { email: userEmail };
                 console.log('user in auth state', currentUser);
                 setUser(currentUser);
                 setLoading(false);
-            });
+
+                
+                    // if (currentUser) {
+                    //     axios.post('https://localhost:5000/jwt', loggedUser, 
+                    //     { withCredentials: true })
+                    //         .then(res => {
+                    //             console.log('response', res.data);
+                    //         })
+                    // }
+                    // else {
+                    //     axios.post('https://localhost:5000/logout', loggedUser, {
+                    //         withCredentials: true
+                    //     }
+                    // )
+                    //         .then(res => {
+                    //             console.log(res.data);
+                    //         })
+                    // }
+                });
         return () => {
             unSubscribe();
         }
-    }, [reload])
+    }, [])
+    // }, [reload])
 
 
 
@@ -79,7 +101,7 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         loading,
-        setReload,
+        // setReload,
         createUser,
         logInUser,
         googleLogin,
