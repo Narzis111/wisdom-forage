@@ -1,15 +1,27 @@
-
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { Zoom } from "react-reveal";
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const TakeAssignment = () => {
     const { user } = useAuth() || {};
-    const submitData = useLoaderData()
-   const {title, marks, _id} = submitData
+    const {id} = useParams();
   
+   const [updates, setUpdates] = useState({});
+   const url = `https://assignment-11-server-ruby.vercel.app/assignment/${id}`;
 
+   useEffect(() => {
+       axios(url, { withCredentials: true } )
+           .then(res => {
+               console.log(res.data);
+               setUpdates(res.data)
+           })
+   }, [url]);
+  
+   
     const handleSubmit = (e) => {
         e.preventDefault();
         const doc = e.target.doc.value;
@@ -17,10 +29,10 @@ const TakeAssignment = () => {
         const email = user?.email;
         const examineeName = user?.displayName;
         const status = 'Pending';
-
+     
         const submit = {
-            tilte: title,
-            marks: marks,
+            tilte: updates.title,
+            marks: updates.marks,
             examineeName,
             email,
             submit_note: note,
@@ -30,7 +42,7 @@ const TakeAssignment = () => {
 
         console.log(submit);
 
-        fetch('http://localhost:5000/submit', {
+        fetch('https://assignment-11-server-ruby.vercel.app/submit', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -49,14 +61,19 @@ const TakeAssignment = () => {
                     });
                 }
             })
+       
     };
 
     return (
+        <>
+        <Helmet>
+            <title>WisdomForage|Take Assignment</title>
+        </Helmet>
         <div>
             <Zoom><h2 className="text-center lg:text-3xl text-xl font-bold hover:animate-heartBeat-2s transition-transform mt-24 mb-4">Submit Your Assignment Here!</h2>
             </Zoom>
-            <h2>Assignment Title: {title}</h2>
-            <h3>Total Mark: {marks}</h3>
+            <h2 className="text-center">Assignment Title: {updates.title}</h2>
+            <h3 className="text-center">Total Mark: {updates.marks}</h3>
             <form onSubmit={handleSubmit} className="max-w-[450px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="form-control">
@@ -97,16 +114,16 @@ const TakeAssignment = () => {
                             name="doc"
                             required
                         ></input>
-
+                       
+                        <div id="previewContainer"></div>                      
                     </div>
-
                 </div>
              
-                <div className="form-control mt-6">
-                <input className="btn btn-primary btn-block" type="submit" value="Submit Confirm" />
+                <div className="form-control">
+                <input className="btn btn-primary btn-block mb-6" type="submit" value="Submit Confirm" />
             </div>
             </form>
-        </div>
+        </div></>
     );
 };
 

@@ -1,6 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,7 +9,11 @@ import { useState } from "react";
 
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "../components/SocialLogin/SocialLogin";
-// import zpot from "../../assets/hat.webp";
+import logo from "../assets/LogoMakr-8qeBOH.png";
+
+import log from '../assets/clip-uniting-the-world.png';
+import { Helmet } from "react-helmet-async";
+
 
 
 const Register = () => {
@@ -50,17 +54,38 @@ const Register = () => {
 
   return (
     <>
+    <Helmet>
+      <title>
+        WisdomForage|Register
+      </title>
+
+    </Helmet>
       
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:h-[750px] w-full lg:text-left">
-            <img className='w-full h-full object-cover' src="" alt="" />
+          <div className="text-center lg:h-[500px] w-[500px] lg:text-left">
+            <img className='w-full h-full object-cover' src={log} alt="" />
 
           </div>
+          <div>
+         
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="card flex-shrink-0 w-full border-2 border-purple-600 max-w-sm shadow-2xl bg-base-100"
+            className="card flex-shrink-0 w-full border-2 border-primary max-w-sm shadow-2xl bg-base-100"
           >
+             <div className='text-center flex justify-center mt-4'>
+                            <NavLink to="/">
+                                <div className="flex items-center gap-1">
+                                    <img className="w-[50px]" src={logo} alt="" />
+                                    <h1 className="lg:text-xl text-xs text-blue-950 font-extrabold">
+                                        <span className="text-2xl">W</span>
+                                        <span>isdom</span>
+                                        <span className="text-2xl text-pretty text-blue-400">F</span>
+                                        <span className="font-semibold text-pretty text-blue-400">orge</span>
+                                    </h1>
+                                </div>
+                            </NavLink>
+                        </div>
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -122,7 +147,7 @@ const Register = () => {
                 )}
               </div>
               <div className="form-control mt-6 p-0">
-                <button className="btn bg-purple-600">Register</button>
+                <button className="btn bg-primary text-white">Register</button>
               </div>
               <label className="label">
                 Have an account?{" "}
@@ -133,6 +158,7 @@ const Register = () => {
               <SocialLogin></SocialLogin>
             </div>
           </form>
+          </div>
         </div>
       </div>
     </>

@@ -1,20 +1,33 @@
 import ReactDatePicker from "react-datepicker";
-import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
 
 
 
 const Update = () => {
+    const { id } = useParams (); 
 
-    const assign = useLoaderData();
-    const { _id,
-        title, description, marks, thumbnail_url,
-        difficulty_level, due_date,
+    const [dueDate, setDueDate] = useState(new Date());
 
-    } = assign;
-    const [dueDate, setDueDate] = useState(null);
+
+    const [updates, setUpdates] = useState({});
+    const url = `https://assignment-11-server-ruby.vercel.app/assignment/${id}`;
+
+    useEffect(() => {
+        axios(url, { withCredentials: true })
+            .then(res => {
+                console.log(res.data);
+                setUpdates(res.data)
+            })
+    }, [url]);
+
+    
+    const { title, description, marks, thumbnail_url, difficulty_level, due_date } = updates || {};
+
 
     const handleDateChange = (date) => {
         setDueDate(date);
@@ -33,17 +46,17 @@ const Update = () => {
 
         const update = {
             title, description, marks, thumbnail_url,
-            difficulty_level, due_date,
+            difficulty_level, due_date, 
 
         };
-        console.log(update);
-
+ 
         // send data to the server
-        fetch(`http://localhost:5000/assignment/${_id}`, {
+        fetch(`https://assignment-11-server-ruby.vercel.app/assignment/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify(update)
         })
             .then(res => res.json())
@@ -58,10 +71,17 @@ const Update = () => {
                     })
                 }
             })
-    }
+     
+    };
+    
 
     return (
         <>
+            <Helmet>
+                <title>
+                    WisdomForage|Update form
+                </title>
+            </Helmet>
 
             <div className="gadgetContainer pt-10">
                 <div className="shadow-lg p-5 border dark:bg-[#1a2641d5]">
@@ -70,7 +90,7 @@ const Update = () => {
                             <span className="mr-3 text-[#FF497C]">
                                 <i className="bx bxs-alarm-add"></i>
                             </span>
-                            <span className="dark:text-white">Update Your Craft Item</span>
+                            <span className="dark:text-white">Update Assignment Form</span>
                         </p>
                     </div>
                     <form onSubmit={handleUpdate}>

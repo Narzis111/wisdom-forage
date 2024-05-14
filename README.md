@@ -1,49 +1,49 @@
-## Skyline Realty
-Welcome to Skyline Realty, your ultimate destination for finding the perfect residential properties! Whether you are looking for a cozy apartment, a spacious townhouse, or a serene rental, we have got you covered. Our website is designed to provide you with a seamless and enjoyable experience as you search for your dream home.
+## Wisdom Forage - Online Group-Study Assignment
+Welcome to Wisdom Forage, your go-to platform for online group study with friends! Whether you're creating assignments, completing them, or grading your friends' submissions, we've got you covered.
+
+
+## Key Features:
+- Create Assignments: Seamlessly create assignments for all users with title, description, marks, thumbnail image URL, difficulty level, and due date.
+- Responsive Design: Enjoy a consistent user experience across all devices - mobile, tablet, and desktop.
+- Secure Authentication: Safely login or register with email/password-based authentication or social login.
+- Assignment Management: View, update, and delete assignments. Filter assignments based on difficulty levels.
+- Submission Handling: Submit assignments with PDF/doc links and quick notes. Preview submitted PDFs with iframes.
+- Feedback System: Receive feedback and marks for your submissions. Grade pending assignments and provide feedback to your peers.
+- Theme Customization: Switch between light and dark themes for a personalized browsing experience.
+
 
 
 ## Visit us:
-- [SkylineRealty](https://assignment-9-project-7021d.web.app/)
+- [WisdomForage](https://assignment-11-project-c8814.web.app)
 
 
 ## About
-Skyline Realty is dedicated to simplifying the process of finding your ideal residential property. Our team is committed to providing you with exceptional service and support at every step of your real estate journey.
+- Our website features a unique and modern design tailored specifically for the online learners, setting us apart from the crowd.
 
-Start your search with Skyline Realty today and turn your dream home into a reality!
+- Active Navbar: The navbar includes active routes, displaying the website name, home page link, add assignment form, update option, and user profile information (if logged in).
 
+- Slider Banner: A visually appealing slider banner showcasing three slides, highlighting featured properties.
 
-
-## Features
-- Responsive Design: Skyline Realty is optimized for all devices, including mobile phones, tablets, and desktop computers, ensuring a consistent user experience across platforms.
-
-- Unique Design: Our website features a unique and modern design tailored specifically for the residential real estate market, setting us apart from the crowd.
-
-- Active Navbar: The navbar includes active routes, displaying the website name, home page link, profile update option, and user profile information (if logged in).
-
-- Login and Registration: Seamless login and registration process with email/password authentication and social login options (Google, GitHub/Facebook/Twitter).
-
-- Slider Banner: A visually appealing slider banner showcasing a minimum of three slides, highlighting featured properties.
-
-- Estate Listings: Explore our curated selection of residential properties, each accompanied by relevant details such as images, title, description, price, status, area, location, facilities, and a "View Property" button.
-
-- Estate Details Page: Dive deeper into individual property listings with our detailed estate details page, providing comprehensive information about each selected property.
+## Pages:
+- Home Page (open for all): Featuring a navbar, banner, feature section, FAQ, and footer.
+- Create Assignment Page (Private): Create assignments with ease.
+- Assignments Page (Public): Browse and manage assignments, filter by difficulty level.
+- My Submitted/Attempted Assignments (Private): View your submitted assignments and feedback.
+- Pending Assignments (open for all): Grade pending assignments and provide feedback to peers.
+Login and Registration Pages (Public): Secure authentication for users.
 
 - 404 Page: In case of a non-existent page, our website includes a custom 404 page to guide users back on track.
 
-- Extra Route: An additional private/protected route with meaningful and relevant content, enhancing the overall user experience.
-
-- Dynamic Page Titles: Each page of our website features a dynamic title to provide context and improve SEO.
-
 
 ## Challenges Accomplished
-- AOS Package and animate.css: Utilized the AOS (Animate On Scroll) and animate.css package for smooth and captivating animations throughout the website.
-
-- Used the React hook form and Protected Route: Used the Hook form in Signup and Signin form. Created a protected route where logged-in users can view and edit their profile information, with changes securely saved using Firebase's updateProfile() method.
+- Validation: Implement form validation for create assignment and authentication forms.
+- JWT Token: Tried to utilize JWT for client-side token storage and private route authentication.
+- Preview PDFs: Display PDF previews with iframes on the submitted assignment page.
+- Theme Customization: Toggle between light and dark themes for a customizable experience.
 
 
 ## Resources
 - [React Router](https://reactrouter.com/en/main/start/tutorial)
-- [Mamba UI - Components](https://mambaui.com/components)
 - [React-Icons](https://react-icons.github.io/react-icons/)
 - [Prop-Types](https://www.npmjs.com/package/prop-types)
 - [React-toastify](https://www.npmjs.com/package/react-toastify)
@@ -51,11 +51,12 @@ Start your search with Skyline Realty today and turn your dream home into a real
 - [TailwindCSS](https://tailwindcss.com/)
 - [React-Helmet-async](https://www.npmjs.com/package/react-helmet-async)
 - [Firebase](https://firebase.google.com/)
-- [Animation.css](https://animate.style/)
-- [AOS animation](https://github.com/michalsnik/aos)
+- [Axios](https://www.npmjs.com/package/axios)
+- [React Reveal](https://www.npmjs.com/package/react-reveal)
+
 
 ## Feedback
-
+Experience the power of collaborative learning with Wisdom Forage. Join us today and embark on your educational journey with friends!
 If you have any feedback, please reach out to us at narzisnahar111@gmail
 
 ## Authors

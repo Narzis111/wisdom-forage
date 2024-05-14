@@ -1,6 +1,7 @@
 import PendingRow from "../components/PendingRow";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const Pending = () => {
@@ -8,26 +9,35 @@ const Pending = () => {
 
   const [pendings, setPendings] = useState([]);
 
-  const url = `http://localhost:5000/submitPending`;
+  const url = `https://assignment-11-server-ruby.vercel.app/submitPending`;
 
 
   useEffect(() => {
-      axios.get(url, {withCredentials:true})
+      axios.get(url, {withCredentials: true})
       .then(res => {
         console.log(res.data);
         setPendings(res.data);
 
       })
   }, [url]);
-  const {tilte, marks, email, examineeName} = pendings;
-       
 
 
     return (
+      <>
+        <Helmet>
+        <title>Wisdom Forge | Pending</title>
+       </Helmet>
         <div>
-            <h1>All Pending Assignments</h1>
-            <h1>total data:{pendings.length}</h1>
-          
+            <div className="mt-5 mb-8">
+                        <p className="text-center text-3xl font-semibold">
+                            <span className="mr-3 text-[#FF497C]">
+                                <i className="bx bxs-alarm-add"></i>
+                            </span>
+                            <span className="dark:text-white">All of our Pending Assignments</span>
+                        </p>
+                        <h1 className="text-xs text-center">total data:{pendings.length}</h1>
+                    </div>
+           
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
@@ -58,7 +68,7 @@ const Pending = () => {
                 </table>
             </div>
             
-        </div>
+        </div></>
     );
 };
 

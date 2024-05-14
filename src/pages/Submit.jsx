@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import SubmitRow from "./SubmitRow";
+import { Helmet } from "react-helmet-async";
+import PropTypes from 'prop-types';
 
 
 const Submit = () => {
@@ -9,20 +11,32 @@ const Submit = () => {
 
     const [submit, setSubmit] = useState([]);
     
-    const url = `http://localhost:5000/mySubmit/${user?.email}`;
+    const url = `https://assignment-11-server-ruby.vercel.app/mySubmit/${user?.email}`;
 
     useEffect(() => {
-        axios(url)
+        axios(url, { withCredentials: true })
             .then(res => {
                 console.log(res.data);
                 setSubmit(res.data)})
     }, [url]);
 
-    const { title, marks, status, obtained_mark, feedback } = submit
-
     return (
+        <>
+        <Helmet>
+            <title>
+                WisdomForage|Submit
+            </title>
+        </Helmet>
         <div>
-            <h1>total data:{submit.length}</h1>
+              <div className="mt-5 mb-8">
+                        <p className="text-center text-3xl font-semibold">
+                            <span className="mr-3 text-[#FF497C]">
+                                <i className="bx bxs-alarm-add"></i>
+                            </span>
+                            <span className="dark:text-white">My Assignments</span>
+                        </p>
+                    </div>
+            <h1 className="text-center text-xs">total data:{submit.length}</h1>
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -53,8 +67,11 @@ const Submit = () => {
                 </table>
             </div>
 
-        </div>
+        </div></>
     );
 };
 
 export default Submit;
+Submit.propTypes = {
+    submit: PropTypes.object,
+}

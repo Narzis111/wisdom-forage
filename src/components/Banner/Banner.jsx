@@ -10,9 +10,9 @@ import 'swiper/css/navigation'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import Slide from './Slide'
 
-import bgimg1 from '../../assets/bg1.jpg'
-import bgimg2 from '../../assets/bg5.jpeg'
-import bgimg3 from '../../assets/download.jpeg'
+import bgimg1 from '../../assets/RemoteLearning_shutterstock_1784228252_1200x600.jpg'
+import bgimg2 from '../../assets/bg1.jpg'
+import bgimg3 from '../../assets/degree-banner.jpg'
 
 export default function Banner() {
   return (
@@ -35,19 +35,19 @@ export default function Banner() {
         <SwiperSlide>
           <Slide
             image={bgimg1}
-            text='Get Your Web Development Projects Done in minutes'
+            text='Unlock Your Potential: Empower Yourself with Lifelong Learning!'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg2}
-            text='Get Your Graphics Design Projects Done in minutes'
+            text='Elevate Your Skills: Access Quality Education Anytime, Anywhere'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg3}
-            text='Start Your Digital Marketing Campaigns up n running'
+            text='Ignite Your Passion for Learning: Join Our Online Educational Community!'
           />
         </SwiperSlide>
       </Swiper>

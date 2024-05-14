@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import useAuth from "./useAuth";
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import useAuth from "./useAuth";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'https://localhost:5000',
+    // baseURL: 'https://localhost:5000',
     withCredentials: true
 });
 

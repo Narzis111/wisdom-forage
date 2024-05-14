@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>, 
-                loader:  () => fetch('http://localhost:5000/assignment'),
+                loader:  () => fetch('https://assignment-11-server-ruby.vercel.app/assignment'),
             },
             {
                 path: "/assignment/add",
@@ -33,23 +33,23 @@ const router = createBrowserRouter([
               {
                 path: "/assignment/all",
                 element: <AllAssignment></AllAssignment>,
-                loader: () => fetch(`http://localhost:5000/assignment`),
+                loader: () => fetch(`https://assignment-11-server-ruby.vercel.app/assignment`),
               },
          
               {
                 path: '/assignment/:id',
                 element: <PrivateRoutes><Details></Details></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`),
+                
               },
               {
                 path: "update/:id",
                 element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`)
+               
               },
               {
                 path: "take/:id",
-                element: <PrivateRoutes><TakeAssignment></TakeAssignment></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/assignment/${params.id}`)
+                element: <TakeAssignment></TakeAssignment>,
+                
               },
               // all pending submission
               {
@@ -68,8 +68,7 @@ const router = createBrowserRouter([
                 // marking page
                 path: "marking/:id",
                 element:<Marking></Marking>,
-                loader: ({ params }) => fetch(`http://localhost:5000/submit/${params.id}`)
-             
+                          
               },
   
 

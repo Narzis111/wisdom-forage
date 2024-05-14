@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const [loading, setLoading] = useState(true);
-   
+
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -28,18 +28,18 @@ const AuthProvider = ({ children }) => {
 
 
     //  update user profile
-     const updateUserProfile = (displayName, email, photoURL) => {
+    const updateUserProfile = (displayName, email, photoURL) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName,
             photoURL,
             email
-                      })
-        }
-           
+        })
+    }
+
 
     // signin user
-    const logInUser =(email, password) => {
+    const logInUser = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, githubProvider);
     };
-  
+
 
     const logOut = () => {
         setUser(null);
@@ -67,33 +67,34 @@ const AuthProvider = ({ children }) => {
             onAuthStateChanged(auth, currentUser => {
                 const userEmail = currentUser?.email || user?.email;
                 const loggedUser = { email: userEmail };
-                console.log('user in auth state', currentUser);
+                // console.log('user in auth state', currentUser);
                 setUser(currentUser);
                 setLoading(false);
 
-                
-                    // if (currentUser) {
-                    //     axios.post('https://localhost:5000/jwt', loggedUser, 
-                    //     { withCredentials: true })
-                    //         .then(res => {
-                    //             console.log('response', res.data);
-                    //         })
-                    // }
-                    // else {
-                    //     axios.post('https://localhost:5000/logout', loggedUser, {
-                    //         withCredentials: true
-                    //     }
-                    // )
-                    //         .then(res => {
-                    //             console.log(res.data);
-                    //         })
-                    // }
-                });
+
+
+                if (currentUser) {
+
+                    axios.post('https://assignment-11-server-ruby.vercel.app/jwt', loggedUser, { withCredentials: true })
+                        .then(response => {
+                            console.log('token', response.data);
+                        })
+
+
+                }
+                else {
+                    axios.post('https://assignment-11-server-ruby.vercel.app/logout', loggedUser, { withCredentials: true }
+                    )
+                        .then(response => {
+                            console.log(response.data);
+                        })
+                }
+            });
         return () => {
             unSubscribe();
         }
-    }, [])
-    // }, [reload])
+    }, [user?.email])
+
 
 
 
@@ -101,7 +102,7 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         loading,
-        // setReload,
+        setLoading,
         createUser,
         logInUser,
         googleLogin,
@@ -119,4 +120,4 @@ const AuthProvider = ({ children }) => {
 export default AuthProvider;
 AuthProvider.propTypes = {
     children: PropTypes.node,
-    }
+}
