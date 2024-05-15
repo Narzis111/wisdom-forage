@@ -72,7 +72,7 @@ const AllAssignment = () => {
         }
 
     }
-   
+
 
 
 
@@ -91,8 +91,8 @@ const AllAssignment = () => {
                 <div>
                     <motion.div className="text-center"
                         animate={{
-                            scale: [1, 2, 2, 1, 1],
-                            rotate: [0, 0, 270, 270, 0],
+                            scale: [1, 1, 1, 1, 1],
+                            rotate: [0, 0, 360, 360, 0],
                             borderRadius: ["20%", "20%", "50%", "50%", "20%"],
                         }}
                     >
@@ -130,39 +130,49 @@ const AllAssignment = () => {
 
                         {currentAssignments.map((assign) => (
                             <div key={assign._id}>
+                                <motion.div className="text-center"
+                                    animate={{
+                                        scale: [1, 2, 2, 1, 1],
+                                        rotate: [0, 0, 360, 360, 0],
+                                        borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+                                    }}
+                                >
+                                    {/* Content to animate */}
+                                    <div className="card bg-base-100 h-[370px] w-full md:w-72 lg:w-72 shadow-xl border-2 border-slate-300 hover:border-primary">
+                                        <div className="h-[230px] p-4">
+                                            <img className='w-full h-full object-fit hover:scale-105' src={assign.thumbnail_url} alt="Item" />
+                                        </div>
+                                        <div className="flex justify-between w-full p-4">
+                                            <div className='space-y-2'>
+                                                <h2 className="card-title hover:underline text-sm"> {assign.title}</h2>
 
-                                <div className="card bg-base-100 h-[500px] w-full md:w-72 lg:w-72 shadow-xl border-2 border-slate-300 hover:border-primary">
-                                    <div className="h-[270px] p-4">
-                                        <img className='w-full h-full object-fit hover:scale-105' src={assign.thumbnail_url} alt="Item" />
-                                    </div>
-                                    <div className="flex justify-between w-full p-4">
-                                        <div className='space-y-2'>
-                                            <h2 className="card-title hover:underline text-md">Name: {assign.title}</h2>
-                                            <h2 className="card-title hover:underline text-xs">Creator: {assign.creator_email}</h2>
-                                            <div className="badge bg-purple-300 hover:bg-purple-600">Level: {assign.difficulty_level}</div>
-                                            <h2 className="card-title hover:underline"></h2>
-                                            <div className="flex justify-between text-xs">
-                                                <p>Marks: <span className='font-bold'> {assign.marks}</span></p>
-                                                <p>Due Date: <span className='font-bold'> {assign.due_date}</span></p>
 
-                                            </div>
-                                            <div className="card-actions justify-center">
-                                                <div className="join space-x-3">
-                                                    <Link to={`/assignment/${assign._id}`}>
-                                                        <button className="btn">View</button>
-                                                    </Link>
-                                                    <Link to={`/update/${assign._id}`}>
-                                                        <button className="btn">Edit</button>
-                                                    </Link>
-                                                    <button
-                                                        onClick={() => handleDelete(assign._id, assign.creator_email)}
-                                                        className="btn bg-red-300">Delete</button>
+                                                <h2 className="card-title hover:underline"></h2>
+                                                <div className="flex justify-between text-xs">
+                                                    <div className="badge bg-purple-300 hover:bg-purple-600">Level: {assign.difficulty_level}</div>
+                                                    <p>Marks: <span className='font-bold'> {assign.marks}</span></p>
+
+
                                                 </div>
+                                                <div className="card-actions justify-center">
+                                                    <div className="join space-x-3">
+                                                        <Link to={`/assignment/${assign._id}`}>
+                                                            <button className="btn">View</button>
+                                                        </Link>
+                                                        <Link to={`/update/${assign._id}`}>
+                                                            <button className="btn">Edit</button>
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => handleDelete(assign._id, assign.creator_email)}
+                                                            className="btn bg-red-300">Delete</button>
+                                                    </div>
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
+
 
                             </div>
                         ))}

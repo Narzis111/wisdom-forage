@@ -1,15 +1,18 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from "firebase/auth";
+import { GithubAuthProvider, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import auth from "../firebase/firebase.config";
 import axios from "axios";
+// import { FacebookAuthProvider } from "firebase/auth/web-extension";
+// import { FacebookAuthProvider } from "firebase/auth/cordova";
 
 
 export const AuthContext = createContext(null);
 
-// social auth providers
+// social auth provider
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
+const fbProvider = new FacebookAuthProvider();
 
 
 
@@ -53,6 +56,11 @@ const AuthProvider = ({ children }) => {
     const githubLogin = () => {
         setLoading(true);
         return signInWithPopup(auth, githubProvider);
+    };
+    // fb login
+    const fbLogin = () => {
+        setLoading(true);
+        return signInWithPopup(auth, fbProvider);
     };
 
 
@@ -107,6 +115,7 @@ const AuthProvider = ({ children }) => {
         logInUser,
         googleLogin,
         githubLogin,
+        fbLogin,
         logOut,
         updateUserProfile
     }

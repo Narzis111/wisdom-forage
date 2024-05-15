@@ -4,12 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 
 const Update = () => {
     const { id } = useParams (); 
+    const navigate = useNavigate()
 
     const [dueDate, setDueDate] = useState(new Date());
 
@@ -69,7 +70,12 @@ const Update = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    .then(() => {
+                        // Redirect to the assignments page
+                       navigate('/assignment/all');
+                    });
                 }
+               
             })
      
     };

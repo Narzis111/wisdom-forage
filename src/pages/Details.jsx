@@ -31,20 +31,20 @@ const Details = () => {
         <div>
             <div>
                 <Zoom>
-                    <h2 className="text-center lg:text-5xl text-xl font-bold hover:animate-heartBeat-2s transition-transform mt-24">View Detail of Selected Assignment</h2>
+                    <h2 className="text-center lg:text-3xl text-xl font-bold hover:animate-heartBeat-2s transition-transform mt-24">View Detail of Selected Assignment</h2>
                 </Zoom>
                 <Fade>
                     <p className="max-w-[750px] hover:animate-flash-2s text-center mx-auto py-6">Explore in-depth details of your selected assignment, including title, description, marks, difficulty level, due date, and more. Dive into learning with precision and clarity</p>
                 </Fade>
             </div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
-                    <div className="w-[400px] h-[400px]">
+                    <div className="w-[320px] h-[300px]">
                         <img className="w-full h-full" src={thumbnail_url} alt={title} />
                     </div>
-                    <div className="space-y-6">
+                    <div className="space-y-6 ml-4">
                         {title && (
-                            <h1 className="text-3xl font-bold">Assignment Title: {title}</h1>
+                            <h1 className="text-2xl font-bold">Assignment Title: {title}</h1>
                         )}
                         {difficulty_level && (
                             <h1>Difficulty level: {difficulty_level}</h1>
@@ -58,11 +58,11 @@ const Details = () => {
                         {due_date && (
                             <p>Date: {due_date}</p>
                         )}
-                        {user?.email !== creator_email && (
+                        {user?.email !== creator_email ? (
                             <Link to={`/take/${_id}`}>
-                                <button onClick={() => handleTake(_id, creator_email)} className="btn bg-purple-600 mt-3">Take Assignment</button>
+                                <button onClick={() => handleTake(_id, creator_email)} className="btn btn-primary text-white mt-3">Take Assignment</button>
                             </Link>
-                        )}
+                        ) : <p>Creator of the assignment can not submit the assignment</p>}
                     </div>
                 </div>
             </div>

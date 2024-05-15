@@ -18,16 +18,17 @@ const Slide = ({ image, text }) => {
           </h1>
           <br />
           <Link
-            to='/assignment/add'><motion.button className='w-full py-4 mr-4 px-4 mt-4 text-sm font-medium text-white'
+            to='/assignment/add'>
+            <motion.button className='w-full lg:ml-4 px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-gray-600 rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}> <button>Create Your Assignment </button>
-            </motion.button></Link>
-
-
+              whileTap={{ scale: 0.9 }}> <button>Create Assignment </button>
+            </motion.button>
+          </Link>
+         
           <Link
-            to='/submit'><motion.button className='w-full py-4 mr-4 px-4 mt-4 text-sm font-medium text-white'
+            to='/assignment/all'><motion.button className='w-full lg:ml-4 px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-gray-600 rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}> <button>Submit your Challenges </button>
+              whileTap={{ scale: 0.9 }}> <button>Take Challenges </button>
             </motion.button></Link>
 
         </div>

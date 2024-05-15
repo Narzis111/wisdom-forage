@@ -21,7 +21,6 @@ const PendingRow = ({ pend }) => {
      
     };
   
-    // Check if the email matches the current user's email
     const currentUserEmail = user?.email
     const isCurrentUserEmail = email === currentUserEmail;
   
@@ -32,16 +31,12 @@ const PendingRow = ({ pend }) => {
         <td>{examineeName}</td>
         <td>{email}</td>
         <th>
-          {isCurrentUserEmail ? (
-            <button className="btn btn-ghost btn-xs" disabled>
-              Submit Mark
-            </button>
-          ) : (
-          <>
-            <Link to={`/marking/${_id}`}>
-              <button className="btn btn-ghost btn-xs">Submit Mark</button>
-            </Link>
-            <button className="ml-2" onClick={handleEyeClick}>
+  {isCurrentUserEmail ? (
+    <>
+      <button className="btn btn-ghost btn-xs" disabled>
+        Submit Mark
+      </button> 
+      <button className="ml-2" onClick={handleEyeClick}>
         <FaEye />
       </button>
       {showPreview && (
@@ -52,10 +47,27 @@ const PendingRow = ({ pend }) => {
           </div>
         </div>
       )}
-          </>
-           
-          )}
-        </th>
+    </>
+  ) : (
+    <>
+      <Link to={`/marking/${_id}`}>
+        <button className="btn btn-ghost btn-xs">Submit Mark</button>
+      </Link>
+      <button className="ml-2" onClick={handleEyeClick}>
+        <FaEye />
+      </button>
+      {showPreview && (
+        <div className="preview-overlay" onClick={handleClosePreview}>
+          <div className="preview-container">
+            {/* Render iframe with the PDF/DOC file */}
+            <iframe title="Document Preview" src={submit_doc} width="100%" height="100%" />
+          </div>
+        </div>
+      )}
+    </>
+  )}
+</th>
+
       </tr>
     );
   };

@@ -66,7 +66,7 @@ const Login = () => {
 
             <div className="hero min-h-screen  lg:mb-10">
                 <div className="hero-content flex-col lg:flex-row">
-                    <div className="h-[600px] w-[700px] lg:text-left rounded-xl p-6">
+                    <div className="h-[600px] lg:w-[700px] lg:text-left rounded-xl p-6">
                         <img className='w-full h-full object-cover rounded-xl' src={log} alt="" />
                     </div>
 
