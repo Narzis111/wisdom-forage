@@ -82,6 +82,9 @@ const Navbar = () => {
               <li>
                 <NavLink to="/pending">Pending Assignments</NavLink>
               </li>
+              <li>
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
 
               <li>
                 <NavLink to="/register">Register</NavLink>
@@ -115,6 +118,9 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/pending">Pending Assignments</NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
 
             <li>

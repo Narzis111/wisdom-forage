@@ -58,11 +58,12 @@ const Details = () => {
                         {due_date && (
                             <p>Date: {due_date}</p>
                         )}
-                        {user?.email !== creator_email ? (
+                        {user?.email !== creator_email && (
                             <Link to={`/take/${_id}`}>
                                 <button onClick={() => handleTake(_id, creator_email)} className="btn btn-primary text-white mt-3">Take Assignment</button>
                             </Link>
-                        ) : <p>Creator of the assignment can not submit the assignment</p>}
+                        ) }
+                        
                     </div>
                 </div>
             </div>

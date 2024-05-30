@@ -16,7 +16,7 @@ import bgimg3 from '../../assets/degree-banner.jpg'
 
 export default function Banner() {
   return (
-    <div className='container px-6 py-10 mx-auto'>
+    <div className='container px-6 py-10 w-full mx-auto'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

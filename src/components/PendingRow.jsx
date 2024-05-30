@@ -42,7 +42,7 @@ const PendingRow = ({ pend }) => {
       {showPreview && (
         <div className="preview-overlay" onClick={handleClosePreview}>
           <div className="preview-container">
-            {/* Render iframe with the PDF/DOC file */}
+           
             <iframe title="Document Preview" src={submit_doc} width="100%" height="100%" />
           </div>
         </div>

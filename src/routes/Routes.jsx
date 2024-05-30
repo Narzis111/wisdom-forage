@@ -13,6 +13,7 @@ import TakeAssignment from "../pages/TakeAssignment";
 import Submit from "../pages/Submit";
 import Pending from "../pages/Pending";
 import Marking from "../pages/Marking";
+import Contact from "../pages/Contact";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,12 @@ const router = createBrowserRouter([
               {
                 path: "/pending",
                 element:<PrivateRoutes><Pending></Pending></PrivateRoutes>,
+                
+
+              },
+              {
+                path: "/contact",
+                element:<Contact></Contact>,
                 
 
               },

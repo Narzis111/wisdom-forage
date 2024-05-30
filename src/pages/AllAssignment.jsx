@@ -5,6 +5,9 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { TbCircleArrowRight } from "react-icons/tb";
+import { FaRegEdit } from "react-icons/fa";
+import { MdOutlineDeleteOutline } from "react-icons/md";
 
 const AllAssignment = () => {
     const { user } = useAuth() || {};
@@ -138,9 +141,10 @@ const AllAssignment = () => {
                                     }}
                                 >
                                     {/* Content to animate */}
-                                    <div className="card bg-base-100 h-[370px] w-full md:w-72 lg:w-72 shadow-xl border-2 border-slate-300 hover:border-primary">
-                                        <div className="h-[230px] p-4">
+                                    <div className="card bg-base-100 h-96 shadow-xl border-2 border-slate-300 hover:border-primary">
+                                        <div className="max-h-[190px] relative  p-4">
                                             <img className='w-full h-full object-fit hover:scale-105' src={assign.thumbnail_url} alt="Item" />
+                                            <div><p className="text-xs absolute top-6 right-4 bg-blue-200">Created by: <span className='font-bold'> {assign.creator_email}</span></p></div>
                                         </div>
                                         <div className="flex justify-between w-full p-4">
                                             <div className='space-y-2'>
@@ -154,17 +158,18 @@ const AllAssignment = () => {
 
 
                                                 </div>
+                                                
                                                 <div className="card-actions justify-center">
                                                     <div className="join space-x-3">
                                                         <Link to={`/assignment/${assign._id}`}>
-                                                            <button className="btn">View</button>
+                                                            <button className="btn"> <TbCircleArrowRight className="text-2xl font-bold" /></button>
                                                         </Link>
                                                         <Link to={`/update/${assign._id}`}>
-                                                            <button className="btn">Edit</button>
+                                                            <button className="btn"><FaRegEdit className="text-2xl font-bold"/></button>
                                                         </Link>
                                                         <button
                                                             onClick={() => handleDelete(assign._id, assign.creator_email)}
-                                                            className="btn bg-red-300">Delete</button>
+                                                            className="btn bg-red-300"> <MdOutlineDeleteOutline className="text-2xl font-bold text-red-800" /></button>
                                                     </div>
 
                                                 </div>
