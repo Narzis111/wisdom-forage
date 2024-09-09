@@ -43,7 +43,7 @@ const AllAssignment = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
 
-                    fetch(`https://assignment-11-server-ruby.vercel.app/assignment/${_id}`, {
+                    fetch(`https://server-11-nine.vercel.app/assignment/${_id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

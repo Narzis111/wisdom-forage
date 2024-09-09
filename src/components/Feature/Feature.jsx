@@ -11,7 +11,7 @@ const Feature = () => {
   const [submit, setSubmit] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const url = `https://assignment-11-server-ruby.vercel.app/features`;
+  const url = `https://server-11-nine.vercel.app/features`;
 
   useEffect(() => {
     axios(url)

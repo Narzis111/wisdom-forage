@@ -11,7 +11,7 @@ const Marking = () => {
 
     const [number, setNumber] = useState({});
 
-    const url = `https://assignment-11-server-ruby.vercel.app/submit/${id}`
+    const url = `https://server-11-nine.vercel.app/submit/${id}`
     useEffect(() => {
         axios(url, { withCredentials: true })
             .then(res => {
@@ -41,7 +41,7 @@ const Marking = () => {
             status: "Completed"
         };
 
-        fetch(`https://assignment-11-server-ruby.vercel.app/submit/${id}`, {
+        fetch(`https://server-11-nine.vercel.app/submit/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

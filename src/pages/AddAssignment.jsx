@@ -38,7 +38,7 @@ const AddAssignment = () => {
         return;
       }
 
-      fetch("https://assignment-11-server-ruby.vercel.app/assignment", {
+      fetch("https://server-11-nine.vercel.app/assignment", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(info),

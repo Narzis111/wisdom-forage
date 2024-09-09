@@ -11,7 +11,7 @@ const TakeAssignment = () => {
     const {id} = useParams();
   
    const [updates, setUpdates] = useState({});
-   const url = `https://assignment-11-server-ruby.vercel.app/assignment/${id}`;
+   const url = `https://server-11-nine.vercel.app/assignment/${id}`;
 
    useEffect(() => {
        axios(url, { withCredentials: true } )
@@ -42,7 +42,7 @@ const TakeAssignment = () => {
 
         console.log(submit);
 
-        fetch('https://assignment-11-server-ruby.vercel.app/submit', {
+        fetch('https://server-11-nine.vercel.app/submit', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

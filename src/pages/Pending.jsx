@@ -9,7 +9,7 @@ const Pending = () => {
 
   const [pendings, setPendings] = useState([]);
 
-  const url = `https://assignment-11-server-ruby.vercel.app/submitPending`;
+  const url = `https://server-11-nine.vercel.app/submitPending`;
 
 
   useEffect(() => {

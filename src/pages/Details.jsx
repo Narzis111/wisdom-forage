@@ -11,7 +11,7 @@ const Details = () => {
     useEffect(() => {
         const fetchAssignmentDetails = async () => {
 
-            const response = await axios.get(`https://assignment-11-server-ruby.vercel.app/assignment/${id}`, { withCredentials: true });
+            const response = await axios.get(`https://server-11-nine.vercel.app/assignment/${id}`, { withCredentials: true });
             setViews(response.data);
 
         };

@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
 
                 if (currentUser) {
 
-                    axios.post('https://assignment-11-server-ruby.vercel.app/jwt', loggedUser, { withCredentials: true })
+                    axios.post('https://server-11-nine.vercel.app/jwt', loggedUser, { withCredentials: true })
                         .then(response => {
                             console.log('token', response.data);
                         })
@@ -91,7 +91,7 @@ const AuthProvider = ({ children }) => {
 
                 }
                 else {
-                    axios.post('https://assignment-11-server-ruby.vercel.app/logout', loggedUser, { withCredentials: true }
+                    axios.post('https://server-11-nine.vercel.app/logout', loggedUser, { withCredentials: true }
                     )
                         .then(response => {
                             console.log(response.data);

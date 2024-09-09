@@ -11,7 +11,7 @@ const Submit = () => {
 
     const [submit, setSubmit] = useState([]);
     
-    const url = `https://assignment-11-server-ruby.vercel.app/mySubmit/${user?.email}`;
+    const url = `https://server-11-nine.vercel.app/mySubmit/${user?.email}`;
 
     useEffect(() => {
         axios(url, { withCredentials: true })

@@ -25,7 +25,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>, 
-                loader:  () => fetch('https://assignment-11-server-ruby.vercel.app/assignment'),
+                loader:  () => fetch('https://server-11-nine.vercel.app/assignment'),
             },
             {
                 path: "/assignment/add",
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
               {
                 path: "/assignment/all",
                 element: <AllAssignment></AllAssignment>,
-                loader: () => fetch(`https://assignment-11-server-ruby.vercel.app/assignment`),
+                loader: () => fetch(`https://server-11-nine.vercel.app/assignment`),
               },
          
               {

@@ -30,6 +30,7 @@ const Navbar = () => {
     }
   }
 
+
   // set theme state in localStorage on mount & also update localStorage on state change
   useEffect(() => {
     localStorage.setItem('theme', theme)
@@ -93,7 +94,7 @@ const Navbar = () => {
 
             </ul>
           </div>
-          <NavLink to="/">
+          <NavLink to="/"> 
             <div className="flex items-center gap-1">
               <img className="w-[50px]" src={logo} alt="" />
               <h1 className="lg:text-xl text-xs text-blue-950 font-extrabold">
@@ -167,7 +168,7 @@ const Navbar = () => {
                 <li className="list-none"> <Link to="/submit">My Assignments</Link></li>
 
                 <button
-                  onClick={() => handleLogOut()}
+               onClick={() => handleLogOut()}
                   className="btn btn-sm text-white hover:text-black bg-red-600 ml-2"
                 >
                   Log Out
